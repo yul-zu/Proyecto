@@ -23,8 +23,8 @@ public class MiProyectoController : ControllerBase
         MongoClient client = new MongoClient(CadenasConexion.MONGO_DB);
         var db = client.GetDatabase("Escuela_Yuliana_Danna");
         var collecion = db.GetCollection<Equipo>("Equipo");
-         var lista= collecion.Find(FilterDefinition<Equipo>.Empty).ToList();
-         return Ok(lista);
+         var item = collecion.Find(FilterDefinition<Equipo>.Empty).FirstOrDefault();
+         return Ok(item);
      
     }
 }
